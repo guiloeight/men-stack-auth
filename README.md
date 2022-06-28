@@ -26,7 +26,7 @@ $ nodemon server.js
 
 ## Resolução
 
-### 1. Fluxos de autenticação:
+### 1. Fluxos de autenticação
    - [ ] Crie um model nominado `User` que contenha os campos:
      - [ ] `username`: afim de receber o nome de usuário; 
      - [ ] `email`: afim de receber o e-mail de usuário; 
@@ -49,7 +49,7 @@ $ nodemon server.js
    - [ ] Crie um novo middleware nominado `authJwt` que contenha o seguinte método:
      - [ ] `verifyToken`: para verificar se o token de autenticação existe e é válido (o usaremos em breve).
 
-### 2. Fluxo de autorização:
+### 2. Fluxos de autorização
    - [ ] Crie um model nominado `Role` que contenha o campo `name` (nome/descrição do papel de usuário);
    - [ ] Importe o model recentemente criado (`Role`) no arquivo `models/index.js`;
    - [ ] No arquivo `models/index.js` especifique as 'roles' (papéis) a serem utilizados;

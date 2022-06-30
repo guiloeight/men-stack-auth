@@ -12,11 +12,14 @@ module.exports = function (app) {
 
   // Insira aqui a rota para sign up
   app.post(
-    // [...]
+    '/api/auth/signup',
+    [
+      verifySignUp.checkDuplicateUsernameOrEmail,
+      verifySignUp.checkRolesExisted,
+    ],
+    controller.signUp,
   );
 
   // Insira aqui a rota para sign in
-  app.post(
-    // [...]
-  );
+  app.post('/api/auth/signin', controller.signIn);
 };

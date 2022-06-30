@@ -15,7 +15,8 @@ const checkDuplicateUsernameOrEmail = (req, res, next) => {
     }
 
     if (user) {
-      // [...]
+      res.status(400).send({ message: 'Erro: nome de usuário já está em uso.' });
+      return;
     }
 
     // Email
@@ -28,7 +29,8 @@ const checkDuplicateUsernameOrEmail = (req, res, next) => {
       }
 
       if (user) {
-        // [...]
+        res.status(400).send({ message: 'Erro: e-mail já está em uso.' });
+        return;
       }
 
       next();
@@ -39,7 +41,16 @@ const checkDuplicateUsernameOrEmail = (req, res, next) => {
 // Insira aqui o método `checkRolesExisted` responsável por verificar se os papéis enviados
 // no cadastramento de usuários existem/são válidos
 const checkRolesExisted = (req, res, next) => {
-  // [...]
+  if (req.body.roles) {
+    for (let i = 0; i < req.body.roles.length; i++) {
+      if (!ROLES.includes(req.body.roles[i])) {
+        res.status(400).send({
+          message: `Erro: o papel/função ${req.body.roles[i]} não existe.`,
+        });
+        return;
+      }
+    }
+  }
 
   next();
 };
